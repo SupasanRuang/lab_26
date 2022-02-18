@@ -2,10 +2,39 @@
 
 using namespace std;
 
-//Write function count() here.
+int count(int data[],int size) 
+{
+	int * c = new int[size];
+	int last_loc=1;
+	for(int i=0;i<size;i++)
+	{
+		if(i==0)
+		{
+			c[0]=data[0];
+			continue ;
+		}
+		bool having=false;
+		for(int j=0;j<last_loc;j++)
+		{
+			//cout<<c[j]<<" ";
+			if(c[j]==data[i])
+			{
+				having=true;
+			}
+		}
+		//cout<<endl;
+		if(!having)
+		{
+			c[last_loc]=data[i];
+			last_loc++;
+		}
+	}
+	delete [] c;
+	return last_loc;
+}
 
 int main(){	
-	int data[] = {1,2,4,5,4,8,2,1,2,4,6,1,4,4,4,2,1,0,12}; 
+	int data[] = {1,2,4,5,4,8,2,1,2,4,6,1,4,4,4,2,1,0,12,999,0}; 
 	
 	cout << "There are " << count(data,sizeof(data)/sizeof(int)); 
 	cout << " different numbers in data.";
