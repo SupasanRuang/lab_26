@@ -63,4 +63,83 @@ void List::append(int d){
 	size++;
 }
 
-//Write List::remove() here
+void List::remove(int idx)
+{
+	Node * temp;
+	Node * p;
+	if(idx==0)
+	{
+		temp=root;
+		root=root->next;	
+		delete temp;
+		
+	}
+	else 
+	{
+		Node *current = root;
+		for(int i=0;i<idx-1;i++)
+		{
+			current = current->next;
+			
+		}
+		p=current;
+		temp=current->next;
+		p->next=temp->next;
+		delete temp;
+	}
+	
+	
+	return ;
+
+
+
+}
+
+int main ()
+{
+	List myList = {0,0};
+myList.append(5);
+myList.append(7);
+myList.append(11);
+myList.append(4);
+myList.append(12);
+myList.append(45);
+
+myList.insert(29,2);
+myList.insert(33,3);
+myList.insert(77,5);
+myList.insert(69,0);
+myList.show();
+cout << "\n"; 
+
+myList.remove(2);
+myList.show();
+cout << "\n"; 
+myList.remove(4);
+myList.show();
+cout <<(myList.root)<< "\n";
+cout <<(myList.root->next)<< "\n";
+cout <<(myList.root->next->next)<< "\n";
+cout <<(myList.root->next->next->next)<< "\n";
+cout <<(myList.root->next->next->next->next)<< "\n";
+cout <<"---------------------------\n";
+cout <<&(myList.root)<< "\n";
+cout <<&(myList.root->next)<< "\n";
+cout <<&(myList.root->next->next)<< "\n";
+cout <<&(myList.root->next->next->next)<< "\n";
+cout <<&(myList.root->next->next->next->next)<< "\n";
+cout <<"---------------------------\n";
+cout <<(myList.root->data)<< "\n";
+cout <<(myList.root->next->data)<< "\n";
+cout <<(myList.root->next->next->data)<< "\n";
+cout <<(myList.root->next->next->next->data)<< "\n";
+cout <<(myList.root->next->next->next->next->data)<< "\n";
+myList.remove(0);
+myList.show();
+cout << "\n";
+
+
+
+
+
+}
