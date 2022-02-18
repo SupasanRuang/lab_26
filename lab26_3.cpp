@@ -1,36 +1,11 @@
 #include<iostream>
-
+#include<set>
 using namespace std;
 
 int count(int data[],int size) 
 {
-	int * c = new int[size];
-	int last_loc=1;
-	for(int i=0;i<size;i++)
-	{
-		if(i==0)
-		{
-			c[0]=data[0];
-			continue ;
-		}
-		bool having=false;
-		for(int j=0;j<last_loc;j++)
-		{
-			//cout<<c[j]<<" ";
-			if(c[j]==data[i])
-			{
-				having=true;
-			}
-		}
-		//cout<<endl;
-		if(!having)
-		{
-			c[last_loc]=data[i];
-			last_loc++;
-		}
-	}
-	delete [] c;
-	return last_loc;
+	set<int> a(data,data+size);
+	return a.size();
 }
 
 int main(){	
